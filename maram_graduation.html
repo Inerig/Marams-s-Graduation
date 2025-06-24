@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maram's Graduation Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffffff;
+      color: #000000;
+      font-family: 'Playfair Display', serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px 0;
+      background-color: #e7f0ea;
+      position: relative;
+    }
+
+    .vintage-curve {
+      display: block;
+      width: 100%;
+      height: 100px;
+      margin-top: -1px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #81A57C;
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #000000;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      width: 2px;
+      background: #b4cdb0;
+    }
+
+    .timeline-item {
+      margin-left: 40px;
+      margin-bottom: 80px;
+      transform: scale(0.95);
+      transition: all 0.6s ease-out;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      width: 16px;
+      height: 16px;
+      background: #81A57C;
+      border-radius: 50%;
+      top: 0;
+    }
+
+    .timeline-item.visible {
+      transform: scale(1);
+    }
+
+    .timeline-item img {
+  width: 300px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.timeline-item img:hover {
+  transform: scale(1.05);
+}
+.photo-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.photo-group img {
+  width: 200px;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.photo-group img:hover {
+  transform: scale(1.05);
+}
+
+
+
+    .timeline-item h2 {
+      color: #81A57C;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .timeline-item.visible h2 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item p {
+      font-size: 1rem;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #e7f0ea;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer h2 {
+      color: #000000;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: #000000;
+      font-style: italic;
+    }
+
+    .signature-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .signature {
+      font-family: 'Playfair Display', cursive;
+      font-size: 1.8rem;
+      color: #000000;
+      margin-top: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #000;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+      display: inline-block;
+    }
+
+    .final-message {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #2c2c2c;
+      opacity: 0;
+      animation: fadeIn 4s ease-in forwards 4s;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #000; }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .firefly {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: #81A57C;
+      border-radius: 50%;
+      box-shadow: 0 0 6px 2px #81A57C;
+      opacity: 0.3;
+      animation: flicker 3s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes flicker {
+      0%, 100% {
+        opacity: 0.1;
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        opacity: 0.4;
+        transform: translateY(-10px) scale(1.2);
+      }
+	  .photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.photo-grid img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.03);
+}
+
+
+    }
+  </style>
+</head>
+<body>
+  <script>
+    for (let i = 0; i < 40; i++) {
+      const f = document.createElement('div');
+      f.className = 'firefly';
+      f.style.top = Math.random() * 100 + 'vh';
+      f.style.left = Math.random() * 100 + 'vw';
+      f.style.animationDelay = `${Math.random() * 5}s`;
+      f.style.animationDuration = `${3 + Math.random() * 2}s`;
+      document.body.appendChild(f);
+    }
+  </script>
+
+  <header>
+    <h1>The Journey of Maram Guehairia</h1>
+    <p>From dreamer to Engineer — 30 June 2025</p>
+    <svg class="vintage-curve" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path fill="#ffffff" d="M0,288 C480,400 960,160 1440,288 L1440,320 L0,320 Z"></path>
+    </svg>
+  </header>
+
+  <!-- Timeline -->
+  <section class="timeline">
+    <div class="timeline-item">
+      <img src="photo1.jpg" alt="Childhood photo placeholder">
+      <h2>Where It All Began</h2>
+      <p>Born on <strong>November 27, 2002</strong>, Maram grew up with a quiet passion for science and discovery. From an early age, numbers made sense to her in a way the world didn’t. In <strong>2020</strong>, she earned her <strong>baccalaureate</strong>, not just as a student — but as a <strong>determined girl</strong> ready to turn her childhood dream into a lifelong pursuit.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="photo-group">
+  <img src="photo2a.jpg" alt="Study night">
+  <img src="photo2b.jpg" alt="Engineering drawings">
+  <img src="photo2c.jpg" alt="drawings">
+</div>
+      <h2>Endless Days of Learning</h2>
+      <p>Long days turned into longer nights, filled with <strong>engineering drawings</strong>, endless assignments, and the hum of her laptop past midnight. Coffee became a companion, and <strong>determination</strong> a constant. Through every deadline, every sleepless study session, she held on — because giving up was never an option.</p>
+    </div>
+    <div class="timeline-item">
+	
+      <img src="photo3.jpg" alt="Challenges conquered">
+	  
+      <h2>Challenges Faced. Challenges Conquered.</h2>
+      <p>From <strong>complex projects</strong> to <strong>countless exams</strong>, Maram faced every challenge head-on. But it was in her <strong>presentations</strong> that her passion truly shined — <strong>hours</strong> spent crafting slides, rehearsing every word, making sure each detail reflected her best. She didn’t just complete the work — she <strong>owned it</strong>.</p>
+    </div>
+    <div class="timeline-item">
+	<div class="photo-group">
+      <img src="photo4.jpg" alt="Graduation moment">
+	  <img src="photo3a.jpg" alt="master">
+	  <img src="photo3b.jpg" alt=" mater2">
+	  </div>
+      <h2>The Final Climb</h2>
+      <p>A <strong>Master’s degree</strong> isn’t just a title — it’s a reflection of <strong>years of effort</strong>, growth, and <strong>unwavering resilience</strong>. It holds the <strong>quiet strength</strong> behind <strong>every late night</strong>, <strong>every sacrifice</strong>, and <strong>every moment she chose to keep going</strong> when it would’ve been easier to stop.</p>
+    </div>
+    <div class="timeline-item">
+      <img src="photo5.jpg" alt="Graduation photo">
+      <h2>Engineer Unlocked</h2>
+      <p>On <strong>30 June 2025</strong>, a <strong>Master of Engineering</strong> — not by chance, but by <strong>choice</strong>, <strong>courage</strong>, and <strong>consistency</strong>. Her future isn’t just bright — it’s one she’s built <strong>with her own hands</strong>.</p>
+    </div>
+    <div class="timeline-item">
+      <img src="photo6.jpg" alt="Support and family">
+      <h2>The World Awaits You</h2>
+      <p>The world is fortunate to welcome an engineer like <strong>Maram</strong> — one whose <strong>mind solves problems</strong>, whose <strong>heart lifts others</strong>, and whose <strong>spirit refuses to be anything but extraordinary</strong>.</p>
+    </div>
+  </section>
+<
+
+  <!-- Footer -->
+  <footer>
+  
+    <h2>This is Your Moment, Maram</h2>
+    <p>Made with love. Your story is just beginning...</p>
+    <div class="signature-wrapper">
+      <div class="signature">Yours, Maimana 💚</div>
+    </div>
+	
+  </footer>
+
+  <!-- Animation script -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>
